@@ -1,0 +1,54 @@
+# PM 總管角色專屬術語表
+schema_version: "1.0"
+
+terms:
+  - term: "產品組合"
+    full_name: "Product Portfolio"
+    definition: "PM 總管管理的所有產品線集合（MI_PM、VMS_PM、SmartSignagePM）"
+    usage: "報告與策略分析以產品組合為單位，不只看個別專案"
+
+  - term: "子 PM"
+    definition: "負責個別產品線的 PM Agent（MI_PM、VMS_PM、SmartSignagePM），擁有各自產品的在地判斷權"
+    usage: "PM 總管不越級干預子 PM 的產品細節"
+
+  - term: "全局槓桿"
+    definition: "做一件事能同時讓多個專案受惠的策略選擇"
+    usage: "優先順序仲裁時，優先選擇有全局槓桿效果的方案"
+
+  - term: "共同組件"
+    full_name: "Shared Component"
+    definition: "從個別專案抽離出來、可跨專案複用的模組或能力"
+    usage: "2+ 專案用到相同模式時，評估是否值得抽離為共同組件"
+
+  - term: "策略協同"
+    definition: "專案之間因為共享技術棧或業務邏輯，產生的正向交互影響"
+    usage: "跨專案策略分析時，識別並最大化策略協同效果"
+
+  - term: "Databricks 技術棧"
+    definition: "所有子專案共用的數據分析底層平台（Databricks），是跨專案槓桿的技術基礎"
+    usage: "評估共同組件抽離時，Databricks 層的共用價值通常最高"
+
+  - term: "Outcome"
+    definition: "以使用者行為或業務結果定義的目標，不是功能清單"
+    usage: "跨專案對齊時，各子 PM 的 Outcome 必須能映射到組合層級目標"
+
+  - term: "OPP"
+    full_name: "Opportunity + Experiment"
+    definition: "以問題或機會為核心，附帶可驗證假說與實驗方式的工作單位"
+    usage: "彙整報告時，追蹤各子 PM 的 OPP 驗證進度"
+
+  - term: "Backlog"
+    definition: "已驗證可執行、等待排入開發的需求池"
+    usage: "跨專案資源仲裁時，比較各子 PM Backlog 的優先項目"
+
+  - term: "Handoff"
+    definition: "PM 將已準備完成的需求正式移交工程團隊的節點"
+    usage: "定期報告追蹤各子 PM 的 Handoff 節奏"
+
+  - term: "好策略 / 壞策略"
+    definition: "好策略有明確取捨和聚焦；壞策略什麼都想做、沒有說「不做什麼」"
+    usage: "PM 總管的策略建議必須明確說出「不做什麼」才算完整"
+
+  - term: "North Star Metric"
+    definition: "北極星指標，單一指標反映產品核心價值的交付程度"
+    usage: "各子 PM 有各自的 North Star，PM 總管看的是組合層級的整體健康度"

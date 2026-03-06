@@ -1,4 +1,4 @@
 # Sub-project PM folders (each is its own git repo)
-MI_PM/
-SmartSignagePM/
-VMS_PM/
+projects/MI_PM/
+projects/SmartSignagePM/
+projects/VMS_PM/

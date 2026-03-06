@@ -1,0 +1,75 @@
+schema_version: "1.0"
+last_updated: "2026-03-06"
+
+skills:
+  - name: "定期報告彙整"
+    alias: "portfolio-report"
+    trigger: "當需要彙整多產品線定期狀態報告時"
+    description: "讀取各子 PM 的狀態，產出跨產品線彙整報告（含策略觀點）"
+    mode: hybrid
+    estimated_effort: medium
+    phase: 1
+    path: ".github/skills/portfolio-report/SKILL.md"
+
+  - name: "跨專案策略分析"
+    alias: "cross-project-strategy"
+    trigger: "當需要分析跨專案資源/效益/衝突時"
+    description: "識別專案間的策略協同、衝突、共同組件抽離機會"
+    mode: hybrid
+    estimated_effort: medium
+    phase: 1
+    path: ".github/skills/cross-project-strategy/SKILL.md"
+
+  - name: "優先順序仲裁"
+    alias: "priority-arbitrate"
+    trigger: "當多產品線搶資源需要仲裁時"
+    description: "基於全局槓桿框架產出優先順序仲裁與資源分配建議"
+    mode: interactive
+    estimated_effort: medium
+    phase: 1
+    path: ".github/skills/priority-arbitrate/SKILL.md"
+
+  - name: "利害關係人對齊"
+    alias: "stakeholder-align"
+    trigger: "當需要對齊上層利害關係人期望時"
+    description: "識別利害關係人、分析立場、產出對齊方案"
+    mode: interactive
+    estimated_effort: medium
+    phase: 2
+    path: ".github/skills/stakeholder-align/SKILL.md"
+
+  - name: "PPTX 簡報流程"
+    alias: "util-pptx"
+    trigger: "任務涉及 .pptx 簡報檔時"
+    description: "讀取、編修、重組或新建 PPTX，含內容與視覺 QA"
+    mode: autonomous
+    estimated_effort: medium
+    phase: 2
+    path: ".github/skills/util-pptx/SKILL.md"
+
+  - name: "子 Repo Git 同步"
+    alias: "repo-git-sync"
+    trigger: "當需要檢查或同步 projects/ 下各 repo 的 git 狀態時"
+    description: "批量檢查各子 PM Repo 的 git 狀態，執行 pull/push 同步，支援 Windows(HTTPS) 與 macOS(SSH)"
+    mode: hybrid
+    estimated_effort: low
+    phase: 1
+    path: ".github/skills/repo-git-sync/SKILL.md"
+
+  - name: "技能擴充"
+    alias: "skill-expand"
+    trigger: "當發現某個重複性任務沒有對應技能時"
+    description: "為自身角色新增技能的基礎能力（元技能）"
+    mode: hybrid
+    estimated_effort: medium
+    phase: 3
+    path: ".github/skills/skill-expand/SKILL.md"
+
+  - name: "Copilot 橋接同步"
+    alias: "copilot-sync"
+    trigger: "當 AGENTS.md 有修改時，或確認橋接同步狀態"
+    description: "確保 copilot-instructions.md 與 AGENTS.md 的必要資訊保持同步"
+    mode: hybrid
+    estimated_effort: low
+    phase: 3
+    path: ".github/skills/copilot-sync/SKILL.md"

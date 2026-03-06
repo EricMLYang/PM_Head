@@ -1,0 +1,30 @@
+# imports.yaml — PM 總管依賴的外部能力
+# 主要來源：各子 PM Repo 的狀態與產出
+
+imports:
+  sub_pm_repos:
+    - repo: "projects/MI_PM"
+      consumes:
+        - "01_inbox/ 信號狀態"
+        - "05_product/ Outcome、OPP、Backlog 進度"
+        - "00_context/01_north_star.md 產品方向"
+        - ".ai/memory/decisions.md 關鍵決策"
+
+    - repo: "projects/VMS_PM"
+      consumes:
+        - "01_inbox/ 信號狀態"
+        - "05_product/ Outcome、OPP、Backlog 進度"
+        - "00_context/ 專案背景"
+        - ".ai/memory/decisions.md 關鍵決策"
+
+    - repo: "projects/SmartSignagePM"
+      consumes:
+        - "01_inbox/ 信號狀態"
+        - "05_product/ Outcome、OPP、Backlog 進度"
+        - "00_context/ 專案背景"
+        - ".ai/memory/decisions.md 關鍵決策"
+
+  framework:
+    - source: "RoleFoundry"
+      consumes:
+        - "Framework v2 規範（.ai/knowledge/standards/framework-v2-spec.md）"

@@ -1,0 +1,26 @@
+# exports.yaml — PM 總管對外提供的能力介面
+# 一旦其他 Repo 開始 import，這裡的定義就是承諾，不能任意修改
+
+exports:
+  skills:
+    - alias: "portfolio-report"
+      description: "產生跨產品線的定期彙整報告"
+      stability: experimental
+
+    - alias: "cross-project-strategy"
+      description: "跨專案策略協同分析（效益、衝突、共同組件）"
+      stability: experimental
+
+    - alias: "priority-arbitrate"
+      description: "跨產品線優先順序仲裁與資源分配建議"
+      stability: experimental
+
+  knowledge:
+    - type: "standards"
+      path: "knowledge/glossary.yaml"
+      description: "跨產品線管理核心術語定義"
+
+  artifacts:
+    - type: "report"
+      description: "定期產出的跨產品線狀態報告"
+      format: "markdown / pptx"
