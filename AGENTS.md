@@ -73,7 +73,10 @@ PM 總管管理以下子 PM Repo（各自為獨立 Project Repo）：
 
 | 目錄 | 用途 | 何時載入 |
 |------|------|---------|
+| `0_portfolio/` | 產品組合總覽（策略、狀態矩陣、資源、共用組件）| 同步狀態、策略分析時 |
+| `5_management/` | PM 工作產出（週報、月報、決策記錄）| 產生報告、記錄決策時 |
 | `.github/skills/` | 技能定義（SKILL.md + checklist + examples）| 執行具體任務時 |
+| `.github/prompts/` | 單次操作 Prompts（初始化、同步、檢視）| 特定場景觸發時 |
 | `.ai/identity.yaml` | 角色身份卡 | 所有任務 |
 | `.ai/principles.md` | 決策原則 | 做取捨判斷時 |
 | `.ai/knowledge/` | 術語表、規範 | 確認用語一致時 |
@@ -86,14 +89,61 @@ PM 總管管理以下子 PM Repo（各自為獨立 Project Repo）：
 
 ---
 
-## 工作規範
-
-1. **載入順序**：先讀 `.ai/identity.yaml` → `.ai/principles.md` → 再執行任務
-2. **彙整來源**：各子 PM 的 `projects/<子PM>/00_context/`、`01_inbox/`、`05_product/`、`.ai/memory/decisions.md`
+## 工作Portfolio 管理**：
+   - 定期同步：週一執行 `sync-portfolio` 更新 `0_portfolio/*.md`
+   - 產出報告：週五執行 `portfolio-report` 產生週報到 `5_management/weekly/`
+   - 重要決策：記錄於 `5_management/decision_records/` 與 `.ai/memory/decisions.md`
+3. **彙整來源**：各子 PM 的 `projects/<子PM>/00_context/`、`01_inbox/`、`05_product/`、`15_management/`
+4. **不越級干預**：不直接修改子 PM Repo 的內容，只讀取彙整
+5. **策略觀點**：每份報告至少包含一個跨專案策略觀點（不只是狀態搬運）xt/`、`01_inbox/`、`05_product/`、`.ai/memory/decisions.md`
 3. **不越級干預**：不直接修改子 PM Repo 的內容，只讀取彙整
 4. **策略觀點**：每份報告至少包含一個跨專案策略觀點（不只是狀態搬運）
 5. **決策記錄**：重要取捨寫入 `.ai/memory/decisions.md`
 6. **橋接同步**：AGENTS.md 變更後使用 `copilot-sync` 維持橋接一致
+
+---
+
+## 自動觸發機制
+
+### Prompts（輕量級單次操作）
+
+除了上述 Skills，PM 總管還有以下 Prompts 用於特定場景：
+
+| Prompt | 檔案位置 | 觸發時機 | 用途 |
+|--------|---------|---------|------|
+| Portfolio 初始化 | `.github/prompts/init-portfolio.prompt.md` | 新建或重置 repo | 建立 portfolio 結構與初始文件 |
+| Portfolio 同步 | `.github/prompts/sync-portfolio.prompt.md` | 週度或按需 | 同步各子 PM 最新狀態到 portfolio |
+| 快速狀態檢視 | `.github/prompts/quick-status.prompt.md` | 即時查詢 | 快速口頭報告當前狀況 |
+
+### 定期觸發（建議設定提醒）
+
+| 時機 | 觸發動作 | 對應 Skill/Prompt |
+|------|---------|------------------|
+| 每週一早上 | 同步各產品線最新狀態 | `sync-portfolio` prompt |
+| 每週五下午 | 產生週報 | `portfolio-report` skill |
+| 每月最後一週 | 產生月報 | `portfolio-report` skill |
+| 每季末 | 產生季報 + 策略分析 | `portfolio-report` + `cross-project-strategy` |
+
+### 事件觸發（即時響應）
+
+| 事件 | 觸發動作 | 對應 Skill/Prompt |
+|------|---------|------------------|
+| 子 PM 提出資源需求衝突 | 優先順序仲裁 | `priority-arbitrate` skill |
+| 發現重複需求 | 共用組件評估 | `cross-project-strategy` skill |
+| AGENTS.md 修改 | 同步 Copilot 指令 | `copilot-sync` skill |
+| 新增子 PM Repo | Portfolio 重新初始化 | `init-portfolio` prompt |
+| 各子 PM 有 git 更新 | 檢查並同步 git 狀態 | `repo-git-sync` skill |
+
+### 人類觸發（口語化指令）
+
+| 使用者說 | 觸發 | 說明 |
+|---------|------|------|
+| 「現在各產品線狀況如何？」 | `quick-status` prompt | 快速口頭報告 |
+| 「同步 portfolio 狀態」 | `sync-portfolio` prompt | 更新 portfolio 文件 |
+| 「寫週報」、「做月報」 | `portfolio-report` skill | 產生完整報告 |
+| 「MI 和 VMS 搶資源怎麼辦」 | `priority-arbitrate` skill | 資源仲裁 |
+| 「掃描有哪些可以共用」 | `cross-project-strategy` skill | 共用組件分析 |
+| 「初始化 portfolio」 | `init-portfolio` prompt | 建立結構 |
 
 ---
 
